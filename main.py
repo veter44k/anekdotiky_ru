@@ -1,9 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
+import os
 def send_telegram(text: str):
-    token = "6241227464:AAHVt3QBVuB-rL742vvvpFNKOagCiEgAuHk"
+    token = os.environ.get("TOKEN")
     url = "https://api.telegram.org/bot"
-    channel_id = "@anekdotiky_ru"
+    channel_id = os.environ.get("CHAT_ID")
     url += token
     method = url + "/sendMessage"
 
@@ -27,4 +28,5 @@ url = 'https://anekdoty.ru/'
 anekdot = get_anekdot(url)
 
 if __name__ == '__main__':
-  send_telegram(anekdot)
+   send_telegram(anekdot)
+
